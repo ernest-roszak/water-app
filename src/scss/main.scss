@@ -83,3 +83,9 @@ body {
     justify-content: center;
   }
 }
+.info {
+  &__content{
+    margin: 0px 48px;
+    display: inline-block;
+  }
+}
