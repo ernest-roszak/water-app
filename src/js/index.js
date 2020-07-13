@@ -52,7 +52,7 @@ minus.addEventListener("click", () => {
   localStorage.setItem(key, sum);
 });
 
-show.addEventListener("click", () => {
-const history = `Data: ${key.value} - ${sum} szklanek`;
-result.innerHTML = history;
-});
+// show.addEventListener("click", () => {
+// const history = `Data: ${key.value} - ${sum} szklanek`;
+// result.innerHTML = history;
+// });
