@@ -15,7 +15,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
 }
 .main {
   display: flex;
@@ -25,12 +25,14 @@ body {
     align-self: center;
     justify-items: center;
     margin: 0 0 48px;
+    text-align: center;
   }
 }
 .glass {
   align-self: center;
   justify-items: center;
   position: relative;
+  background-size: contain;
   &__img {
   }
   &__content {
