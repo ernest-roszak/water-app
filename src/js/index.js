@@ -10,10 +10,13 @@ const glass = document.querySelector(".glass--js");
 const add = document.querySelector(".add--js");
 const minus = document.querySelector(".minus--js");
 const info = document.querySelector(".info--js");
+const result = document.querySelector(".result--js");
 const key = new Date().toLocaleString().slice(0, 10);
+const show = document.querySelector(".show--js");
 
 let sum = 0;
 const keyValue = localStorage.getItem(key);
+
 
 glass.innerHTML = `${sum}`;
 
@@ -49,4 +52,7 @@ minus.addEventListener("click", () => {
   localStorage.setItem(key, sum);
 });
 
-console.log(`to twoje ${key}`);
+show.addEventListener("click", () => {
+const history = `Data: ${key.value} - ${sum} szklanek`;
+result.innerHTML = history;
+});
