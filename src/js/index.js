@@ -10,7 +10,7 @@ const glass = document.querySelector(".glass--js");
 const add = document.querySelector(".add--js");
 const minus = document.querySelector(".minus--js");
 const info = document.querySelector(".info--js");
-let result = document.querySelector(".result--js");
+
 const key = new Date().toLocaleString().slice(0, 10);
 const show = document.querySelector(".show--js");
 
@@ -53,56 +53,18 @@ minus.addEventListener("click", () => {
 });
 
 
-// for (let index = 0; index < array.length; index++) {
+
+
+
+for (let cos of Object.entries(localStorage)) {
+    console.log(Object.entries(localStorage));
+    const {first, ...vars} = cos;
+
+    const result = document.querySelector(".result--js");
     
-//     const test = Object.entries(localStorage)
-// result.innerHTML = test;
-//     console.log(test);
-
-//     const newEl = document.createElement("div");
-// result.innerText = array[index];
-// }
-
-// const test = Object.entries(localStorage)
-// result.innerHTML = test;
-//     console.log(test);
-
-//     const newEl = document.createElement("div");
-// result.innerText = "przykładowy tekst";
-
-// show.addEventListener("click", () => {
-// const history = `Data: ${key} - ${sum} szklanek`;
-// result.innerHTML = history;
-// });
-
-// var i;
-
-// for (i = 0; i < localStorage.length; i++)   {
-//   const test = (localStorage.key(i) + "=[" + localStorage.getItem(localStorage.key(i)) + "]");
-//     result.innerHTML = test;
-//     console.log(localStorage.key(i) + "=[" + localStorage.getItem(localStorage.key(i)) + "]");
-// };
-
-// for(Object.entries(localStorage)
-    
-    
-//     var value = localStorage[test];
-//     test = document.createElement("div");
-//     result.innerHTML = (test + " => " + value);
-// }
-
-for (let i = 0; i < localStorage.length; i++) {
-    console.log(i);
-document.createElement("div").innerHTML = Object.entries(localStorage)[i];
-let testObject = Object.entries(localStorage);
-console.log(testObject);
-result.innerHTML = Object.entries(localStorage)[i];
-console.log(i);
-}
-// // Put the object into storage
-// localStorage.setItem('testObject', JSON.stringify(testObject));
-
-// // Retrieve the object from storage
-// var retrievedObject = localStorage.getItem('testObject');
-
-// console.log('retrievedObject: ', JSON.parse(retrievedObject));
+    // result.innerHTML += Object.entries(localStorage)[i];
+    let testObject = Object.entries(localStorage);
+    const listItem = `<li> ${vars[0]} </li>`;
+    console.log(vars);
+    result.innerHTML += listItem;
+};
