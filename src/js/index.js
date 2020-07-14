@@ -14,13 +14,15 @@ const info = document.querySelector(".info--js");
 const key = new Date().toLocaleString().slice(0, 10);
 const show = document.querySelector(".show--js");
 
-let sum = 0;
+
 const keyValue = localStorage.getItem(key);
 
 
+let sum = keyValue;
 glass.innerHTML = `${sum}`;
 
 if (keyValue) {
+    
   sum = keyValue;
 } else {
   localStorage.setItem(key, 0);
@@ -61,13 +63,17 @@ for (let cos of Object.entries(localStorage)) {
     const {...vars} = cos;
     cos.shift();
     const result = document.querySelector(".result--js");
-    
-    
     const testObject = Object.entries(localStorage);
+    
+   
+   
     Object.entries(localStorage).shift();
     Object.entries(localStorage).splice(0,1);
     
     const listItem = `<li> Data: ${vars[0]} liczba szklanek: ${vars[1]}</li>`;
     console.log(vars);
     result.innerHTML += listItem;
+
+    const total = vars.Value
+    console.log(total);
 };
