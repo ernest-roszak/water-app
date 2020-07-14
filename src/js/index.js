@@ -57,14 +57,17 @@ minus.addEventListener("click", () => {
 
 
 for (let cos of Object.entries(localStorage)) {
-    console.log(Object.entries(localStorage));
-    const {first, ...vars} = cos;
-
+    console.log(typeof Object.entries(localStorage));
+    const {...vars} = cos;
+    cos.shift();
     const result = document.querySelector(".result--js");
     
-    // result.innerHTML += Object.entries(localStorage)[i];
-    let testObject = Object.entries(localStorage);
-    const listItem = `<li> ${vars[0]} </li>`;
+    
+    const testObject = Object.entries(localStorage);
+    Object.entries(localStorage).shift();
+    Object.entries(localStorage).splice(0,1);
+    
+    const listItem = `<li> Data: ${vars[0]} liczba szklanek: ${vars[1]}</li>`;
     console.log(vars);
     result.innerHTML += listItem;
 };
