@@ -46,6 +46,8 @@ console.log(water);
 
 
 goalButton.addEventListener("click", () => {
+  goalButton.classList.toggle("buttons--active");
+  setTimeout(() => goalButton.classList.toggle("buttons--active"), 200);
   let goal = select.value;
   console.log(goal);
   localStorage.setItem("select", goal);
@@ -82,6 +84,9 @@ add.addEventListener("click", () => {
   } else {
     water.style.opacity = 1;
     done.innerHTML = `Congratulations, you have achieved your goal today :)`;
+  }
+  if (progress < 100) {
+    done.innerHTML = ``;
   }
 
   console.log(progress);
