@@ -17,14 +17,12 @@ const hamburgerButton = document.querySelector(".navigation__button--js");
 const closeButton = document.querySelector(".aside__button--js");
 const asideMenu = document.querySelector(".aside");
 const asideGlass = document.querySelector(".glass");
-const asideHistoryHTMLElement = document.querySelector(".aside__history");
-const key = new Date().toLocaleString().slice(0, 10);
-const keyValue = localStorage.getItem(key);
 const water = document.querySelector(".water--js");
 const select = document.querySelector(".asiede__select--js");
 const goalButton = document.querySelector(".goal__button--js");
-
-
+const asideHistoryHTMLElement = document.querySelector(".aside__history");
+const key = new Date().toLocaleString().slice(0, 10);
+const keyValue = localStorage.getItem(key);
 let sum = keyValue;
 
 // Glass number
@@ -33,14 +31,28 @@ glass.innerHTML = `${sum}`;
 
 if (keyValue) {
   sum = keyValue;
-  
-  water.style.opacity = 0.2;
+  water.style.opacity = 0.1;
 } else {
   localStorage.setItem(key, 0);
 }
 if (sum > 9) {
   glass.classList.add("glass__content--duble");
 }
+// Goal settings
+
+
+console.log(select.value);
+console.log(water);
+
+
+goalButton.addEventListener("click", () => {
+  let goal = select.value;
+  console.log(goal);
+  localStorage.setItem("select", goal);
+});
+
+
+
 
 // Buttons add/remove
 
@@ -93,6 +105,12 @@ minus.addEventListener("click", () => {
     let goal = select.value;
     const goalValue = localStorage.getItem(goal);
     const progress = (sum / goal) * 100;
+    console.log(goal);
+    console.log(keyValue);
+    console.log(select.value);
+    console.log(sum);
+    console.log(progress);
+
     water.style.opacity = `${progress}%`;
     console.log(water.style.opacity);
     if (progress <= 20) {
@@ -123,8 +141,6 @@ minus.addEventListener("click", () => {
   }
   localStorage.setItem(key, sum);
 });
-
-
 
 // History of glasses
 
@@ -181,20 +197,6 @@ const Data = () => {
     }
   });
 };
-
-// Goal settings
-
-
-console.log(select.value);
-console.log(water);
-
-
-goalButton.addEventListener("click", () => {
-  let goal = select.value;
-  console.log(goal);
-  localStorage.setItem("select", goal);
-});
-
 
 
 
