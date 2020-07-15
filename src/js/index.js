@@ -14,14 +14,14 @@ const minus = document.querySelector(".minus--js");
 const info = document.querySelector(".info--js");
 const done = document.querySelector(".done--js");
 const hamburgerButton = document.querySelector(".navigation__button--js");
-const closeButton = document.querySelector(".asside__button--js");
-const assideMenu = document.querySelector(".asside");
-const assideGlass = document.querySelector(".glass");
-const assideHistoryHTMLElement = document.querySelector(".asside__history");
+const closeButton = document.querySelector(".aside__button--js");
+const asideMenu = document.querySelector(".aside");
+const asideGlass = document.querySelector(".glass");
+const asideHistoryHTMLElement = document.querySelector(".aside__history");
 const key = new Date().toLocaleString().slice(0, 10);
 const keyValue = localStorage.getItem(key);
 const water = document.querySelector(".water--js");
-const select = document.querySelector(".assiede__select--js");
+const select = document.querySelector(".asiede__select--js");
 const goalButton = document.querySelector(".goal__button--js");
 
 
@@ -142,8 +142,8 @@ const result = () => {
     if (item.data.length == 10) {
       const p = document.createElement("p");
       p.innerHTML = `On ${item.data}, you drank ${item.value} glasses of water`;
-      p.classList.add("asside__item");
-      assideHistoryHTMLElement.appendChild(p);
+      p.classList.add("aside__item");
+      asideHistoryHTMLElement.appendChild(p);
     }
   });
 };
@@ -151,15 +151,15 @@ const result = () => {
 // Hamburger menu
 
 hamburgerButton.addEventListener("click", () => {
-  assideMenu.classList.toggle("asside--active");
-  assideGlass.classList.toggle("glass--active");
+  asideMenu.classList.toggle("aside--active");
+  asideGlass.classList.toggle("glass--active");
   result();
 });
 
 closeButton.addEventListener("click", () => {
-  assideMenu.classList.toggle("asside--active");
-  assideGlass.classList.toggle("glass--active");
-  assideHistoryHTMLElement.innerHTML = " ";
+  asideMenu.classList.toggle("aside--active");
+  asideGlass.classList.toggle("glass--active");
+  asideHistoryHTMLElement.innerHTML = " ";
   // showClients();
 });
 const Data = () => {
@@ -176,8 +176,8 @@ const Data = () => {
     if (item.data.length == 10) {
       const p = document.createElement("p");
       p.innerHTML = `${item.data}: Sklep odwiedziło ${item.value} klientów`;
-      p.classList.add("asside__item");
-      assideHistoryHTMLElement.appendChild(p);
+      p.classList.add("aside__item");
+      asideHistoryHTMLElement.appendChild(p);
     }
   });
 };
