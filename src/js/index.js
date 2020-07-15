@@ -17,10 +17,14 @@ const hamburgerButton = document.querySelector(".navigation__button--js");
 const closeButton = document.querySelector(".asside__button--js");
 const assideMenu = document.querySelector(".asside");
 const assideGlass = document.querySelector(".glass");
-
 const assideHistoryHTMLElement = document.querySelector(".asside__history");
 const key = new Date().toLocaleString().slice(0, 10);
 const keyValue = localStorage.getItem(key);
+const water = document.querySelector(".water--js");
+const select = document.querySelector(".assiede__select--js");
+const goalButton = document.querySelector(".goal__button--js");
+
+
 let sum = keyValue;
 
 // Glass number
@@ -29,6 +33,8 @@ glass.innerHTML = `${sum}`;
 
 if (keyValue) {
   sum = keyValue;
+  
+  water.style.opacity = 0.2;
 } else {
   localStorage.setItem(key, 0);
 }
@@ -87,12 +93,6 @@ minus.addEventListener("click", () => {
     let goal = select.value;
     const goalValue = localStorage.getItem(goal);
     const progress = (sum / goal) * 100;
-    console.log(goal);
-    console.log(keyValue);
-    console.log(select.value);
-    console.log(sum);
-    console.log(progress);
-
     water.style.opacity = `${progress}%`;
     console.log(water.style.opacity);
     if (progress <= 20) {
@@ -123,6 +123,8 @@ minus.addEventListener("click", () => {
   }
   localStorage.setItem(key, sum);
 });
+
+
 
 // History of glasses
 
@@ -182,19 +184,16 @@ const Data = () => {
 
 // Goal settings
 
-const water = document.querySelector(".water--js");
-const select = document.querySelector(".assiede__select--js");
-const goalButton = document.querySelector(".goal__button--js");
 
 console.log(select.value);
 console.log(water);
+
 
 goalButton.addEventListener("click", () => {
   let goal = select.value;
   console.log(goal);
   localStorage.setItem("select", goal);
 });
-
 
 
 
