@@ -27,13 +27,12 @@ let sum = keyValue;
 
 // Glass number
 
-glass.innerHTML = `${sum}`;
-
 if (keyValue) {
   sum = keyValue;
   water.style.opacity = 0.1;
 } else {
   localStorage.setItem(key, 0);
+  glass.innerHTML = `0`;
 }
 if (sum > 9) {
   glass.classList.add("glass__content--duble");
