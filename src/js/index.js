@@ -39,11 +39,21 @@ if (sum > 9) {
   glass.classList.add("glass__content--duble");
 }
 // Goal settings
+let myGoal = JSON.parse(localStorage.getItem("select")) || [];
 
+function addValue() {
+  localStorage.setItem("select", JSON.stringify(myGoal));
+}
 
-console.log(select.value);
-console.log(water);
+function save() {
+  localStorage.getItem("select", goal);
+  const save = goal.value;
 
+  myGoal = save;
+}
+
+console.log(addValue);
+console.log(myGoal);
 
 goalButton.addEventListener("click", () => {
   goalButton.classList.toggle("buttons--active");
@@ -51,23 +61,14 @@ goalButton.addEventListener("click", () => {
   let goal = select.value;
   console.log(goal);
   localStorage.setItem("select", goal);
+
+  save();
 });
 
-
-
-
-// Buttons add/remove
-
-add.addEventListener("click", () => {
-  add.classList.toggle("buttons--active");
-  setTimeout(() => add.classList.toggle("buttons--active"), 200);
-  sum++;
-  glass.innerHTML = `${sum}`;
-
-  let goal = select.value;
-  const goalValue = localStorage.getItem(goal);
-  const progress = (sum / goal) * 100;
+// Opacity settings
+const progress = () => {
   water.style.opacity = `${progress}%`;
+  const progress = (sum / myGoal) * 100;
 
   if (progress <= 20) {
     water.style.opacity = 0.2;
@@ -83,15 +84,32 @@ add.addEventListener("click", () => {
     water.style.opacity = 0.7;
   } else {
     water.style.opacity = 1;
-    done.innerHTML = `Congratulations, you have achieved your goal today :)`;
   }
-  if (progress < 100) {
+  if (progress >= 100) {
+    done.innerHTML = `Congratulations, you have achieved your goal today :)`;
+  } else if (progress < 100) {
     done.innerHTML = ``;
   }
 
   console.log(progress);
+};
+
+// Buttons add/remove
+
+add.addEventListener("click", () => {
+  add.classList.toggle("buttons--active");
+  setTimeout(() => add.classList.toggle("buttons--active"), 200);
+  sum++;
+  glass.innerHTML = `${sum}`;
+  progress();
+
+  save();
+  console.log("select");
+  console.log(myGoal);
+  console.log(goal.value);
 
   localStorage.setItem(key, sum);
+
   if (sum != 0) {
     info.innerHTML = ``;
   }
@@ -103,41 +121,12 @@ add.addEventListener("click", () => {
 minus.addEventListener("click", () => {
   minus.classList.toggle("buttons--active");
   setTimeout(() => minus.classList.toggle("buttons--active"), 200);
+  save();
   if (sum > 0) {
     sum = parseInt(sum) - 1;
     glass.innerHTML = `${sum}`;
 
-    let goal = select.value;
-    const goalValue = localStorage.getItem(goal);
-    const progress = (sum / goal) * 100;
-    console.log(goal);
-    console.log(keyValue);
-    console.log(select.value);
-    console.log(sum);
-    console.log(progress);
-
-    water.style.opacity = `${progress}%`;
-    console.log(water.style.opacity);
-    if (progress <= 20) {
-      water.style.opacity = 0.2;
-    } else if (progress <= 40) {
-      water.style.opacity = 0.3;
-    } else if (progress <= 60) {
-      water.style.opacity = 0.4;
-    } else if (progress <= 70) {
-      water.style.opacity = 0.5;
-    } else if (progress <= 80) {
-      water.style.opacity = 0.6;
-    } else if (progress <= 90) {
-      water.style.opacity = 0.7;
-    } else {
-      water.style.opacity = 1;
-    }
-
-    console.log(progress);
-    if (progress < 100) {
-      done.innerHTML = ``;
-    }
+    progress();
   } else {
     info.innerHTML = `ℹ️ You don't have any glass yet. First, add a glass of water`;
   }
@@ -202,34 +191,3 @@ const Data = () => {
     }
   });
 };
-
-
-
-
-
-// const goalValue = localStorage.getItem(goal);
-
-//  if (keyValue) {
-//      sum = keyValue;
-
-//     console.log(goal);
-//     console.log(keyValue);
-//     console.log(sum);
-//     console.log(progress);
-//  }
-
-// for (let cos of Object.entries(localStorage)) {
-//     console.log(typeof Object.entries(localStorage));
-//     const {...vars} = cos;
-//     cos.shift();
-//     const result = document.querySelector(".result--js");
-//     const testObject = Object.entries(localStorage);
-
-//     Object.entries(localStorage).shift();
-//     const now = testObject.shift();
-//     console.log(now)
-
-//     const listItem = `<li> Data: ${vars[0]} liczba szklanek: ${vars[1]}</li>`;
-
-//     result.innerHTML += listItem;
-//     };
